@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Challanges
+from .models import *
 
 
 # class ChallangesAdmin(admin.ModelAdmin):
@@ -8,4 +8,5 @@ from .models import Challanges
 
 
 admin.site.register(Challanges)
+admin.site.register(Completed_Challange)
 # Register your models here.

@@ -22,10 +22,14 @@ class Challanges(models.Model):
     Personal = models.IntegerField(default=0)
     completed = models.BooleanField(default=False)
     students = models.ManyToManyField(CustomUser, related_name="student_challanges")
-
     def __str__(self):
         return self.Title
 
+class Completed_Challange(models.Model):
+    challenge = models.ForeignKey(Challanges, on_delete=models.CASCADE)
+    student = models.ForeignKey(CustomUser,on_delete=models.CASCADE)
+    def __str__(self):
+        return str(self.id)
 
 
 # Send notification when challenge is created

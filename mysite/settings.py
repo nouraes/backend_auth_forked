@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',  # new
 
-    # 'chat',
+    'chat',
     # 'djoser',
 
     # Local Apps
@@ -86,7 +86,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ os.path.join( BASE_DIR, 'templates' ) ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,12 +98,18 @@ TEMPLATES = [
         },
     },
 ]
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 #############LOCAL DATABASE###########################################
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -114,6 +120,7 @@ DATABASES = {
         'PORT': os.getenv('DATABASE_PORT', 5432),
     }
 }
+
 #############CLOUD DATABASE###########################################
 
 
@@ -151,7 +158,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000'

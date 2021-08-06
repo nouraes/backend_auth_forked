@@ -18,12 +18,24 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
-from challanges.views import TeacherChallangesView, StudentChallangesView, ChallangeView
+from challanges.views import TeacherChallangesView, StudentChallangesView, ChallangeView,get_report
 from classes.views import StudentClassView, StudentClassStudentsView
 from users.views import StudentProfileView
-
+from django.contrib.auth import logout
+from django.urls import path
+from chat.views import *
 
 urlpatterns = [
+    # Chat
+
+    path('',index, name='index'),
+    path('chat/', chat_view, name='chats'),
+    path('chat/<int:sender>/<int:receiver>/', message_view, name='chat'),
+    path('api/messages/<int:sender>/<int:receiver>/', message_list, name='message-detail'),
+    path('api/messages/', message_list, name='message-list'),
+    path('logout/', logout, {'next_page': 'index'}, name='logout'),
+    path('register/', register_view, name='register'),
+
     path('admin/', admin.site.urls),
     path('api/v1/users/', include('users.urls')),
     path('api/v1/teacher/classes/', StudentClassView.as_view()),
@@ -32,5 +44,6 @@ urlpatterns = [
     #path('api/v1/teacher/classes/<int:student_class_id>/student/<int:student_id>/challanges/<int:challange_id>', ChallangeView.as_view()), #for debug
     path('api/v1/teacher/challanges/', TeacherChallangesView.as_view()),
     path('api/v1/students/challanges/', StudentChallangesView.as_view()),
-    path('api/v1/students/', StudentProfileView.as_view())
+    path('api/v1/students/', StudentProfileView.as_view()),
+    path('api/students/report/', get_report)
 ]
