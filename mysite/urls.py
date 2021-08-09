@@ -43,7 +43,7 @@ urlpatterns = [
     path('api/v1/teacher/classes/<int:student_class_id>/student/<int:student_id>/challanges/', TeacherChallangesView.as_view()),
     #path('api/v1/teacher/classes/<int:student_class_id>/student/<int:student_id>/challanges/<int:challange_id>', ChallangeView.as_view()), #for debug
     path('api/v1/teacher/challanges/', TeacherChallangesView.as_view()),
-    path('api/v1/students/challanges/', StudentChallangesView.as_view()),
+    path('api/v1/students/<int:student_id>', StudentChallangesView.as_view()),
     path('api/v1/students/', StudentProfileView.as_view()),
     path('api/students/report/', get_report)
 ]

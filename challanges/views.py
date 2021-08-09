@@ -13,10 +13,11 @@ class TeacherChallangesView(generics.ListCreateAPIView):
 class StudentChallangesView(generics.ListCreateAPIView):
     ordering = ['-created']
     serializer_class = ChallagesSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated] #for debug
 
     def get_queryset(self):
-        return Challanges.objects.filter(students__pk=self.request.user.pk)
+        #return Challanges.objects.filter(students__pk=self.request.user.pk)
+        return Challanges.objects#.filter(students__pk=self.request.user.pk)
 
 #############for debug#############################################################################
 class ChallangeView(generics.ListCreateAPIView):
