@@ -20,7 +20,7 @@ class Challanges(models.Model):
     Emotional = models.IntegerField(default=0)
     Study = models.IntegerField(default=0)
     Personal = models.IntegerField(default=0)
-    #completed = models.BooleanField(default=False)
+    completed = models.BooleanField(default=False)
     students = models.ManyToManyField(CustomUser, related_name="student_challanges")
     def __str__(self):
         return self.Title

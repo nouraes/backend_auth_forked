@@ -117,7 +117,7 @@ GitHub.sublime-settings
 
 /data
 /.idea
-/mysite/settings.py
+/mysite
 Dockerfile
 docker-compose.yml
 
