@@ -22,7 +22,7 @@ class Challanges(models.Model):
     Personal = models.IntegerField(default=0)
     completed = models.BooleanField(default=False)
     students = models.ManyToManyField(CustomUser, related_name="student_challanges")
-    chl_image = models.ImageField()
+    #chl_image = models.ImageField()
     def __str__(self):
         return self.Title
 
